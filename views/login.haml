@@ -1,0 +1,8 @@
+%div.container
+	%form.form-signin{action:"/login",method:"post"}
+		%h2.form-signin-heading Please sign in
+		%input.input-block-level{type:"text", placeholder:"Email address", name:"email", autofocus:true}
+		%input.input-block-level{type:"password", placeholder:"Password", name:"password"}
+		%button.btn.btn-primary{type:"submit"} Sign in
+		or
+		%a.btn{href:"/signup"} Sign up

@@ -1,0 +1,22 @@
+local run:
+  bundle exec ruby web.rb -p 4567
+
+local migration:
+  bundle exec sequel -E -m migrations -M 0 sqlite://my.db
+  bundle exec sequel -E -m migrations sqlite://my.db
+
+local db:
+  bundle exec sequel sqlite://my.db
+
+remote init:
+	git init
+	git add .
+	git commit -m "init"
+	heroku create --stack cedar
+	https://devcenter.heroku.com/categories/heroku-postgres
+	git push heroku master
+	heroku run bundle exec sequel -E -m ./migrations \$DATABASE_URL
+	heroku restart
+	heroku ps
+	heroku logs
+	heroku open

@@ -1,0 +1,27 @@
+!!!
+%html{lang:"en"}
+	%head
+		%meta{charset:"utf-8"}
+		%title TODO: Title...
+		%meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
+		%script{type:"text/javascript", src:"/js/jquery.min.js"}
+		%script{type:"text/javascript", src:"/js/web.js"}
+		%script{type:"text/javascript", src:"/js/bootstrap.min.js"}
+		- if @custom_js
+			%script{type:"text/javascript", src:@custom_js}
+		- #TODO: Analytics...
+		- #%script{type:"text/javascript", src:"/js/google-analytics.js"}
+		%link{rel:"stylesheet", href:"/css/bootstrap.min.css"}
+		%link{rel:"stylesheet", href:"/css/bootstrap-responsive.min.css"}
+		%link{rel:"stylesheet", href:"/css/web.css"}
+		- if @custom_css
+			%link{rel:"stylesheet", href:@custom_css}
+	%body
+		%div.navbar.navbar-fixed-top
+			%div.navbar-inner
+				%div.container
+					%a.brand{href:"/"} TODO: Site name...
+		%div.container
+			- if flash[:notice]
+				%div.alert= flash[:notice]
+			=yield
